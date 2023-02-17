@@ -1,0 +1,8 @@
+.app {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	background-color: rgb(77, 101, 122);
+	height: 100%;
+	width: 100%;
+}
