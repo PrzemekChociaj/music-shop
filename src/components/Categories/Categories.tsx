@@ -7,7 +7,6 @@ const Categories = () => {
 		font-weight: bold;
 		border-radius: 1px;
 		background-color: #e4dada;
-		height: 900px;
 		width: 300px;
 		margin-top: 10px;
 		flex-direction: column;
