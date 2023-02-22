@@ -11,6 +11,7 @@ const Newsletter = () => {
 		justify-content: center;
 		top: 100px;
 		flex-direction: column;
+		font-family: 'Roboto Condensed', sans-serif;
 	`;
 	const Title = styled.h1`
 		font-size: 70px;
@@ -50,7 +51,7 @@ const Newsletter = () => {
 			<InputContainer>
 				<Input />
 				<Button>
-					<MailIcon />{' '}
+					<MailIcon />
 				</Button>
 			</InputContainer>
 		</Container>

@@ -15,7 +15,7 @@ const Categories = () => {
 		height: 100vh;
 		align-items: center;
 		text-align: center;
-		background: #1a1e23; 
+		background: #1a1e23;
 		border-radius: 10px;
 	`;
 
@@ -35,7 +35,6 @@ const Categories = () => {
 		text-transform: uppercase;
 		cursor: pointer;
 		border: 1px solid white;
-	
 
 		&::after {
 			position: absolute;
