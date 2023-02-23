@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 const Categories = () => {
+	const navigate = useNavigate();
+
+	const HipHopHandler = () => {
+		navigate('/HipHop');
+	};
 	const CategoriesContainer = styled.div`
 		color: #ffffff;
 		font-weight: bold;
@@ -19,22 +24,23 @@ const Categories = () => {
 		border-radius: 10px;
 	`;
 
-	const Category = styled.div`
+	const Category = styled.button`
 		margin-top: 40px;
 		display: block;
 		padding: 4px 0;
 		font-family: 'Roboto Condensed', sans-serif;
 		width: 100%;
-		color: #ecf0f1;
+		color: #ffffff;
 		transition: 0.5s;
 		position: relative;
 		display: block;
 		padding: 4px 0;
-		color: #ecf0f1;
 		text-decoration: none;
 		text-transform: uppercase;
 		cursor: pointer;
 		border: 1px solid white;
+		background-color: #000000;
+		border-radius: 1px;
 
 		&::after {
 			position: absolute;
@@ -61,7 +67,7 @@ const Categories = () => {
 	return (
 		<CategoriesContainer>
 			Categories
-			<Category>Hip Hop</Category>
+			<Category onClick={HipHopHandler}>Hip Hop</Category>
 			<Category>Rock </Category>
 			<Category> Metal </Category>
 			<Category> Blues</Category>

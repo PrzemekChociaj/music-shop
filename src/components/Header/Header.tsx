@@ -5,12 +5,13 @@ import { Badge, IconButton, TextField } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import styled from 'styled-components';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
 	height: 60px;
 	background-color: white;
 `;
-
+const Home = styled.button``;
 const Logo = styled.h3`
 	font-weight: bold;
 `;
@@ -58,11 +59,19 @@ const RightItems = styled.div`
 `;
 
 const Header = () => {
+	const navigate = useNavigate();
+
+	const HomeHandler = () => {
+		navigate('/');
+	};
 	return (
 		<>
 			<Container>
 				<Wrapper>
 					<Left>
+						<Home onClick={HomeHandler}>
+							<HomeIcon />
+						</Home>
 						<SearchContainer>
 							<Input />
 							<SearchOutlinedIcon />

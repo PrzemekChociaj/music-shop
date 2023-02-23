@@ -9,7 +9,6 @@ const CdList = () => {
 	`;
 
 	const ImageContainer = styled.div`
-		margin-top: 10px;
 		padding-top: 100px;
 		display: flex;
 		flex: 1;
