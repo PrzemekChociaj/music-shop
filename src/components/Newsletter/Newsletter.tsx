@@ -4,7 +4,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 const Newsletter = () => {
 	const Container = styled.div`
-		height: 60vh;
+		height: 40vh;
 		background-color: #92b3b0;
 		display: flex;
 		align-items: center;
