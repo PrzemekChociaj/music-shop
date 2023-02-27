@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Products from './Products';
+import RockProducts from './RockProducts';
 
 const Container = styled.div`
 	border: 1px solid grey;
@@ -37,10 +37,10 @@ const ImageContainer = styled.div`
 
 const Option = styled.option``;
 
-const HipHop = () => {
+const Rock = () => {
 	return (
 		<Container>
-			<Title> Hip Hop </Title>
+			<Title> Rock </Title>
 			<FilterContainer>
 				<Filter>
 					<FilterText> Sort Products: </FilterText>
@@ -51,9 +51,9 @@ const HipHop = () => {
 					</Select>
 				</Filter>
 			</FilterContainer>
-			<Products />
+			<RockProducts />
 		</Container>
 	);
 };
 
-export default HipHop;
+export default Rock;
