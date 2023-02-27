@@ -7,6 +7,9 @@ const Categories = () => {
 	const HipHopHandler = () => {
 		navigate('/HipHop');
 	};
+	const PopHandler = () => {
+		navigate('/Pop');
+	};
 
 	const RockHandler = () => {
 		navigate('/Rock');
@@ -75,7 +78,7 @@ const Categories = () => {
 			<Category onClick={RockHandler}>Rock </Category>
 			<Category> Metal </Category>
 			<Category> Blues</Category>
-			<Category> Pop </Category>
+			<Category onClick={PopHandler}> Pop </Category>
 		</CategoriesContainer>
 	);
 };

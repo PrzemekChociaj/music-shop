@@ -3,18 +3,18 @@ import Footer from '../Footer/Footer';
 import Discount from '../Header/Discount';
 import Header from '../Header/Header';
 import Newsletter from '../Newsletter/Newsletter';
-import Rock from '../Categories/Rock/Rock';
+import Pop from '../Categories/Pop/Pop';
 
-const RockPage = () => {
+const PopPage = () => {
 	return (
 		<>
 			<Discount />
 			<Header />
-			<Rock />
+			<Pop />
 			<Newsletter />
 			<Footer />
 		</>
 	);
 };
 
-export default RockPage;
+export default PopPage;
