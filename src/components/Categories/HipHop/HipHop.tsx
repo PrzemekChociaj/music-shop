@@ -35,6 +35,7 @@ const ImageContainer = styled.div`
 
 const Option = styled.option``;
 import styled from 'styled-components';
+import Products from './Products';
 const HipHop = () => {
 	return (
 		<Container>
@@ -49,12 +50,9 @@ const HipHop = () => {
 					</Select>
 				</Filter>
 			</FilterContainer>
-			<Top>
-				<ImageContainer></ImageContainer>
-				<ImageContainer></ImageContainer>
-				<ImageContainer></ImageContainer>
-			</Top>
-			<Bottom></Bottom>
+			<Products />
+			
+
 		</Container>
 	);
 };
