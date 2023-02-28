@@ -45,7 +45,6 @@ const MainContent = () => {
 		<MainContainer>
 			<Title> Special Offer this week!</Title>
 			<Descripiton>
-				{' '}
 				If u buy CD in our shop u get 20% discount on the second one!{' '}
 			</Descripiton>
 			<Button> SHOP NOW</Button>

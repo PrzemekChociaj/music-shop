@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import HipHopPage from './components/Pages/HipHopPage';
 import RockPage from './components/Pages/RockPage';
 import PopPage from './components/Pages/PopPage';
+import MetalPage from './components/Pages/MetalPage';
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 			<Route path='/HipHop' element={<HipHopPage />}></Route>
 			<Route path='/Rock' element={<RockPage />}></Route>
 			<Route path='/Pop' element={<PopPage />}></Route>
+			<Route path='/Metal' element={<MetalPage />}></Route>
 		</Routes>
 	);
 }

@@ -14,6 +14,10 @@ const Categories = () => {
 	const RockHandler = () => {
 		navigate('/Rock');
 	};
+
+	const MetalHandler = () => {
+		navigate('/Metal');
+	};
 	const CategoriesContainer = styled.div`
 		color: #ffffff;
 		font-weight: bold;
@@ -76,8 +80,7 @@ const Categories = () => {
 			Categories
 			<Category onClick={HipHopHandler}>Hip Hop</Category>
 			<Category onClick={RockHandler}>Rock </Category>
-			<Category> Metal </Category>
-			<Category> Blues</Category>
+			<Category onClick={MetalHandler}> Metal </Category>
 			<Category onClick={PopHandler}> Pop </Category>
 		</CategoriesContainer>
 	);
