@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 const Container = styled.div`
 	display: flex;
 	justify-content: space-evenly;
@@ -48,6 +49,22 @@ const Mail = styled.div`
 	padding-top: 10px;
 `;
 
+const ScrollUp = styled.button`
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	left: 200px;
+	top: 50px;
+	&:hover {
+		background-color: #e9f5f5;
+		transform: scale(1.1);
+	}
+`;
+
+const ScrollHandler = () => {
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 const Footer = () => {
 	return (
 		<Container>
@@ -74,6 +91,9 @@ const Footer = () => {
 					<EmailIcon />
 					Mail: MaklerOffice@mail.dev
 				</Mail>
+				<ScrollUp onClick={ScrollHandler}>
+					<ArrowUpwardIcon />{' '}
+				</ScrollUp>
 			</Right>
 		</Container>
 	);

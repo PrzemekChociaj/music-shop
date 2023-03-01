@@ -11,7 +11,7 @@ const MainContent = () => {
 		float: center;
 		position: absolute;
 		left: 310px;
-		top: 100px;
+		top: 110px;
 
 		background-image: url('https://img.freepik.com/free-photo/young-woman-summer-clothes-listening-music-wearing-headphones-singing-along-favorite-song-dancing-earphones-standing-against-blue-background_1258-122074.jpg?w=1800&t=st=1676928567~exp=1676929167~hmac=612d6f0c71d60a4eed6a9a20e79296aa8e4eae1f64d948e141910009e5faa968');
 		background-repeat: no-repeat;

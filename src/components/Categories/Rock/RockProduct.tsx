@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useNavigate } from 'react-router-dom';
 const Info = styled.div`
 	opacity: 0;
 	width: 100%;
@@ -63,6 +64,13 @@ const Icon = styled.div`
 `;
 
 const RockProduct = ({ item }) => {
+
+	const navigate = useNavigate();
+
+const ExamplePageHandler = () => {
+	navigate('/ExamplePage');
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 	return (
 		<Container>
 			<Circle />
@@ -72,10 +80,7 @@ const RockProduct = ({ item }) => {
 					<AddShoppingCartIcon />
 				</Icon>
 				<Icon>
-					<SearchIcon />
-				</Icon>
-				<Icon>
-					<FavoriteIcon />
+					<SearchIcon onClick={ExamplePageHandler} />
 				</Icon>
 			</Info>
 		</Container>

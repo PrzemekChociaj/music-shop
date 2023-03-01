@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
 const CdList = () => {
+	const navigate = useNavigate();
+
+	const ExamplePageHandler = () => {
+		navigate('/ExamplePage');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
 	const Container = styled.div`
 		height: 100vh;
 		background-color: aliceblue;
@@ -16,6 +25,7 @@ const CdList = () => {
 		text-align: center;
 		border: 1px solid black;
 		flex-direction: column;
+		cursor: pointer;
 	`;
 
 	const HipHopImage = styled.div`
@@ -57,15 +67,15 @@ const CdList = () => {
 
 	return (
 		<Container>
-			<ImageContainer>
+			<ImageContainer onClick={ExamplePageHandler}>
 				<Title>Hip Hop - Gibbs - Czarno na białym</Title>
 				<HipHopImage />
 			</ImageContainer>
-			<ImageContainer>
+			<ImageContainer onClick={ExamplePageHandler}>
 				<Title>Pop - Sanah - Śpiewa Poezyje</Title>
 				<PopImage />
 			</ImageContainer>
-			<ImageContainer>
+			<ImageContainer onClick={ExamplePageHandler}>
 				<Title>Rock - Nirvana - Nevermind</Title>
 				<RockImage />
 			</ImageContainer>

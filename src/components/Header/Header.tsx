@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Container = styled.div`
 	height: 60px;
 	background-color: white;
+	margin-bottom:20px;
 `;
 const Home = styled.button``;
 const Logo = styled.h3`
