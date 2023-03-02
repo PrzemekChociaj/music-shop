@@ -6,6 +6,8 @@ import RockPage from './components/Pages/RockPage';
 import PopPage from './components/Pages/PopPage';
 import MetalPage from './components/Pages/MetalPage';
 import ExamplePage from './components/Pages/ExamplePage';
+import RegisterPage from './components/Pages/RegisterPage';
+import LoginPage from './components/Pages/LoginPage';
 
 function App() {
 	return (
@@ -16,6 +18,8 @@ function App() {
 			<Route path='/Pop' element={<PopPage />}></Route>
 			<Route path='/Metal' element={<MetalPage />}></Route>
 			<Route path='/ExamplePage' element={<ExamplePage />}></Route>
+			<Route path='/Register' element={<RegisterPage />}></Route>
+			<Route path='/Login' element={<LoginPage />}></Route>
 		</Routes>
 	);
 }

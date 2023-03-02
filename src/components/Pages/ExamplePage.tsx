@@ -26,7 +26,7 @@ const AmountContainer = styled.div`
 	margin-top: 10px;
 `;
 const Amount = styled.span`
-	margin-left:10px;
+	margin-left: 10px;
 	border: 1px solid black;
 	width: 30px;
 	height: 25px;

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Container = styled.div`
 	height: 60px;
 	background-color: white;
-	margin-bottom:20px;
+	margin-bottom: 20px;
 `;
 const Home = styled.button``;
 const Logo = styled.h3`
@@ -65,6 +65,14 @@ const Header = () => {
 	const HomeHandler = () => {
 		navigate('/');
 	};
+
+	const RegisterNavigate = () => {
+		navigate('/Register');
+	};
+
+	const LoginNavigate = () => {
+		navigate('/Login');
+	};
 	return (
 		<>
 			<Container>
@@ -82,8 +90,8 @@ const Header = () => {
 						<Logo> MAKLER ZONE </Logo>
 					</Center>
 					<Right>
-						<RightItems>REGISTER</RightItems>
-						<RightItems> LOGIN</RightItems>
+						<RightItems onClick={RegisterNavigate}>REGISTER</RightItems>
+						<RightItems onClick={LoginNavigate}> LOGIN</RightItems>
 						<RightItems>
 							<Badge badgeContent={4} color='primary'>
 								<AddShoppingCartIcon />

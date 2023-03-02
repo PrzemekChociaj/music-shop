@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Products from './Products';
 
-
-
 const Container = styled.div`
 	border: 1px solid grey;
 	margin-top: 10px;

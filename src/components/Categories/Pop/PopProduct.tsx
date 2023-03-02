@@ -64,13 +64,12 @@ const Icon = styled.div`
 `;
 
 const PopProduct = ({ item }) => {
-
 	const navigate = useNavigate();
 
-const ExamplePageHandler = () => {
-	navigate('/ExamplePage');
-	window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+	const ExamplePageHandler = () => {
+		navigate('/ExamplePage');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
 	return (
 		<Container>
 			<Circle />
