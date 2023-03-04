@@ -31,7 +31,7 @@ const Categories = () => {
 		height: 100vh;
 		align-items: center;
 		text-align: center;
-		background: #1a1e23;
+		background: #0c0c0c;
 		border-radius: 10px;
 	`;
 
@@ -50,7 +50,7 @@ const Categories = () => {
 		text-transform: uppercase;
 		cursor: pointer;
 		border: 1px solid white;
-		background-color: #000000;
+		background-color: #080808;
 		border-radius: 1px;
 
 		&::after {

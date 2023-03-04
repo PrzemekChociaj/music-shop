@@ -32,6 +32,7 @@ const Register = styled.span`
 	justify-content: center;
 	text-decoration: underline;
 	cursor: pointer;
+	margin-top: 10px;
 `;
 const Form = styled.form`
 	display: flex;

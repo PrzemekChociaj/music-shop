@@ -8,6 +8,7 @@ import MetalPage from './components/Pages/MetalPage';
 import ExamplePage from './components/Pages/ExamplePage';
 import RegisterPage from './components/Pages/RegisterPage';
 import LoginPage from './components/Pages/LoginPage';
+import ShoppingPage from './components/Pages/ShoppingPage';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 			<Route path='/ExamplePage' element={<ExamplePage />}></Route>
 			<Route path='/Register' element={<RegisterPage />}></Route>
 			<Route path='/Login' element={<LoginPage />}></Route>
+			<Route path='/Shop' element={<ShoppingPage />}></Route>
 		</Routes>
 	);
 }

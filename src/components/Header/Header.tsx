@@ -73,6 +73,10 @@ const Header = () => {
 	const LoginNavigate = () => {
 		navigate('/Login');
 	};
+
+	const ShopNavigate = () => {
+		navigate('/Shop');
+	};
 	return (
 		<>
 			<Container>
@@ -94,7 +98,7 @@ const Header = () => {
 						<RightItems onClick={LoginNavigate}> LOGIN</RightItems>
 						<RightItems>
 							<Badge badgeContent={4} color='primary'>
-								<AddShoppingCartIcon />
+								<AddShoppingCartIcon onClick={ShopNavigate} />
 							</Badge>
 						</RightItems>
 					</Right>
