@@ -181,7 +181,7 @@ const ShoppingPage = () => {
 							<PriceDetail>
 								<ProductAmountContainer>
 									<AddIcon />
-									<ProductAmount>1</ProductAmount>
+									<ProductAmount>Product Amount: 1</ProductAmount>
 									<RemoveIcon />
 								</ProductAmountContainer>
 								<ProductPrice>$ 20</ProductPrice>

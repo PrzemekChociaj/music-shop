@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: flex;
@@ -51,16 +51,41 @@ const Button = styled.button`
 `;
 
 const RegisterPage = () => {
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(email);
+	};
 	return (
 		<Container>
 			<Wrapper>
 				<Title>CREATE ACCOUNT</Title>
-				<Form>
-					<Input placeholder='First name'></Input>
-					<Input placeholder='Last name'></Input>
-					<Input placeholder='Username'></Input>
-					<Input placeholder='Email'></Input>
-					<Input placeholder='Password'></Input>
+				<Form onSubmit={handleSubmit}>
+					<Input
+						value={firstName}
+						onChange={(event) => setFirstName(event.target.value)}
+						placeholder='First name'></Input>
+					<Input
+						value={lastName}
+						onChange={(event) => setLastName(event.target.value)}
+						placeholder='Last name'></Input>
+					<Input
+						value={username}
+						onChange={(event) => setUsername(event.target.value)}
+						placeholder='Username'></Input>
+					<Input
+						value={email}
+						onChange={(event) => setEmail(event.target.value)}
+						placeholder='Email'></Input>
+					<Input
+						value={password}
+						onChange={(event) => setPassword(event.target.value)}
+						placeholder='Password'></Input>
 					<Input placeholder='Confirm password'></Input>
 					<Button> Register </Button>
 				</Form>
