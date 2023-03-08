@@ -51,42 +51,88 @@ const Button = styled.button`
 `;
 
 const RegisterPage = () => {
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [values, setValues] = useState({
+		firstname: '',
+		lastname: '',
+		username: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
+	});
 
+	const inputs = [
+		{
+			id: 1,
+			name: 'firstname',
+			type: 'text',
+			placeholder: 'First Name',
+			label: 'First Name',
+		},
+		{
+			id: 2,
+			name: 'lastname',
+			type: 'text',
+			placeholder: 'Last Name',
+			label: 'Last Name',
+		},
+		{
+			id: 3,
+			name: 'username',
+			type: 'text',
+			placeholder: 'username',
+			errorMessage:
+				'Username should be 3-16 characters and shouldnt include any special character!',
+			label: 'username',
+		},
+		{
+			id: 4,
+			name: 'email',
+			type: 'text',
+			placeholder: 'Email',
+			errorMessage: 'It should be valid email address!',
+			label: 'Email',
+		},
+		{
+			id: 5,
+			name: 'password',
+			type: 'password',
+			placeholder: 'Password',
+			errorMessage:
+				'Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character!',
+			label: 'Password',
+		},
+		{
+			id: 6,
+			name: 'confirmPassword',
+			type: 'password',
+			placeholder: 'Confirm Password',
+			errorMessage: 'Password dont match!',
+			label: 'Confirm Password',
+		},
+	];
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(email);
+		console.log(values);
 	};
+
+	const onChange = (event) => {
+		setValues({ ...values, [event.target.name]: event.target.value });
+	};
+
 	return (
 		<Container>
 			<Wrapper>
 				<Title>CREATE ACCOUNT</Title>
 				<Form onSubmit={handleSubmit}>
-					<Input
-						value={firstName}
-						onChange={(event) => setFirstName(event.target.value)}
-						placeholder='First name'></Input>
-					<Input
-						value={lastName}
-						onChange={(event) => setLastName(event.target.value)}
-						placeholder='Last name'></Input>
-					<Input
-						value={username}
-						onChange={(event) => setUsername(event.target.value)}
-						placeholder='Username'></Input>
-					<Input
-						value={email}
-						onChange={(event) => setEmail(event.target.value)}
-						placeholder='Email'></Input>
-					<Input
-						value={password}
-						onChange={(event) => setPassword(event.target.value)}
-						placeholder='Password'></Input>
-					<Input placeholder='Confirm password'></Input>
+					{inputs.map((input) => (
+						<Input
+							key={input.id}
+							{...input}
+							value={values[input.name]}
+							onChange={onChange}
+						/>
+					))}
+
 					<Button> Register </Button>
 				</Form>
 			</Wrapper>
