@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import FormInput from './FormInput';
 
 const Container = styled.div`
 	font-family: 'Montserrat', sans-serif;
@@ -66,14 +67,12 @@ const RegisterPage = () => {
 			name: 'firstname',
 			type: 'text',
 			placeholder: 'First Name',
-			label: 'First Name',
 		},
 		{
 			id: 2,
 			name: 'lastname',
 			type: 'text',
 			placeholder: 'Last Name',
-			label: 'Last Name',
 		},
 		{
 			id: 3,
@@ -82,15 +81,16 @@ const RegisterPage = () => {
 			placeholder: 'username',
 			errorMessage:
 				'Username should be 3-16 characters and shouldnt include any special character!',
-			label: 'username',
+			pattern: '^[A-Za-z0-9]{3,16}$',
+			required: true,
 		},
 		{
 			id: 4,
 			name: 'email',
-			type: 'text',
+			type: 'email',
 			placeholder: 'Email',
 			errorMessage: 'It should be valid email address!',
-			label: 'Email',
+			required: true,
 		},
 		{
 			id: 5,
@@ -99,7 +99,8 @@ const RegisterPage = () => {
 			placeholder: 'Password',
 			errorMessage:
 				'Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character!',
-			label: 'Password',
+			pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+			required: true,
 		},
 		{
 			id: 6,
@@ -107,7 +108,8 @@ const RegisterPage = () => {
 			type: 'password',
 			placeholder: 'Confirm Password',
 			errorMessage: 'Password dont match!',
-			label: 'Confirm Password',
+			pattern: values.password,
+			required: true,
 		},
 	];
 	const handleSubmit = (event) => {
@@ -125,7 +127,7 @@ const RegisterPage = () => {
 				<Title>CREATE ACCOUNT</Title>
 				<Form onSubmit={handleSubmit}>
 					{inputs.map((input) => (
-						<Input
+						<FormInput
 							key={input.id}
 							{...input}
 							value={values[input.name]}
