@@ -1,8 +1,14 @@
 import { ButtonBase } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const MainContent = () => {
+	const navigate = useNavigate();
+
+	const ShopHandler = () => {
+		navigate('/Shop');
+	};
 	const MainContainer = styled.div`
 		height: 100vh;
 		width: 1550px;
@@ -47,7 +53,7 @@ const MainContent = () => {
 			<Descripiton>
 				If u buy CD in our shop u get 20% discount on the second one!{' '}
 			</Descripiton>
-			<Button> SHOP NOW</Button>
+			<Button onClick={ShopHandler}> SHOP NOW</Button>
 		</MainContainer>
 	);
 };

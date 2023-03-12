@@ -63,11 +63,16 @@ const LoginPage = () => {
 	const RegisterNavigate = () => {
 		navigate('/Register');
 	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+	};
+
 	return (
 		<Container>
 			<Wrapper>
 				<Title>LOGIN</Title>
-				<Form>
+				<Form onSubmit={handleSubmit}>
 					<Input placeholder='Username'></Input>
 					<Input placeholder='Password'></Input>
 

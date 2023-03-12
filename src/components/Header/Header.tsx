@@ -97,7 +97,7 @@ const Header = () => {
 						<RightItems onClick={RegisterNavigate}>REGISTER</RightItems>
 						<RightItems onClick={LoginNavigate}> LOGIN</RightItems>
 						<RightItems>
-							<Badge badgeContent={4} color='primary'>
+							<Badge badgeContent={2} color='primary'>
 								<AddShoppingCartIcon onClick={ShopNavigate} />
 							</Badge>
 						</RightItems>

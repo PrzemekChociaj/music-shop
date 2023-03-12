@@ -103,7 +103,7 @@ const ExamplePage = () => {
 					</Description>
 					<Price> 20.00$</Price>
 					<Button>
-						<AddShoppingCartIcon></AddShoppingCartIcon>
+						<AddShoppingCartIcon />
 					</Button>
 					<AmountContainer>
 						<RemoveContainer>
