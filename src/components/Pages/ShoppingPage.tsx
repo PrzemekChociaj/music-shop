@@ -158,9 +158,7 @@ const ShoppingPage = () => {
 							</ProductDetail>
 							<PriceDetail>
 								<ProductAmountContainer>
-									<AddIcon />
-									<ProductAmount>2</ProductAmount>
-									<RemoveIcon />
+									<ProductAmount> Amount: 1</ProductAmount>
 								</ProductAmountContainer>
 								<ProductPrice>$ 30</ProductPrice>
 							</PriceDetail>
@@ -180,11 +178,9 @@ const ShoppingPage = () => {
 							</ProductDetail>
 							<PriceDetail>
 								<ProductAmountContainer>
-									<AddIcon />
-									<ProductAmount>Product Amount: 1</ProductAmount>
-									<RemoveIcon />
+									<ProductAmount>Amount: 1</ProductAmount>
 								</ProductAmountContainer>
-								<ProductPrice>$ 20</ProductPrice>
+								<ProductPrice>$ 30</ProductPrice>
 							</PriceDetail>
 						</Product>
 					</Info>

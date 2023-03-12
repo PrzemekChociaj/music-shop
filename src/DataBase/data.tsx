@@ -1,4 +1,4 @@
-export const popularProducts = [
+export const popularHipHopProducts = [
 	{
 		id: 1,
 		img: 'https://ecsmedia.pl/c/czarno-na-bialym-b-iext97578038.jpg',
@@ -9,6 +9,7 @@ export const popularProducts = [
 	},
 	{
 		id: 3,
+		price: 10.99,
 		img: 'https://ecsmedia.pl/c/europa-b-iext116464164.jpg',
 	},
 	{

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FormInput from './FormInput';
 
+
+
 const Container = styled.div`
 	font-family: 'Montserrat', sans-serif;
 	background-size: cover;
@@ -118,7 +120,9 @@ const RegisterPage = () => {
 	};
 
 	const onChange = (event) => {
-		setValues({ ...values, [event.target.name]: event.target.value });
+		setValues((values) => {
+			return { ...values, [event.target.name]: event.target.value };
+		});
 	};
 
 	return (
@@ -128,8 +132,8 @@ const RegisterPage = () => {
 				<Form onSubmit={handleSubmit}>
 					{inputs.map((input) => (
 						<FormInput
-							key={input.id}
 							{...input}
+							key={input.id}
 							value={values[input.name]}
 							onChange={onChange}
 						/>

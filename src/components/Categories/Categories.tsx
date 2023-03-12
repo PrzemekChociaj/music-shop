@@ -22,7 +22,7 @@ const Categories = () => {
 		color: #ffffff;
 		font-weight: bold;
 		border-radius: 1px;
-		background-color: #e4dada;
+		background-color: #000000;
 		width: 300px;
 		margin-top: 10px;
 		flex-direction: column;
@@ -31,7 +31,7 @@ const Categories = () => {
 		height: 100vh;
 		align-items: center;
 		text-align: center;
-		background: #0c0c0c;
+		background: #03558b;
 		border-radius: 10px;
 	`;
 
@@ -49,9 +49,8 @@ const Categories = () => {
 		text-decoration: none;
 		text-transform: uppercase;
 		cursor: pointer;
-		border: 1px solid white;
-		background-color: #080808;
-		border-radius: 1px;
+		background-color: #040e9e;
+		border-radius: 0px;
 
 		&::after {
 			position: absolute;
@@ -60,14 +59,14 @@ const Categories = () => {
 			left: 0;
 			width: 100%;
 			height: 3px;
-			background: #3498db;
+			background: #000000;
 			transform: scaleX(0);
 			transform-origin: right;
 			transition: transform 0.5s;
 		}
 
 		&:hover {
-			color: #95a5a6;
+			color: #fbff00;
 		}
 
 		&:hover::after {
@@ -77,7 +76,7 @@ const Categories = () => {
 	`;
 	return (
 		<CategoriesContainer>
-			Categories
+			CATEGORIES
 			<Category onClick={HipHopHandler}>Hip Hop</Category>
 			<Category onClick={RockHandler}>Rock </Category>
 			<Category onClick={MetalHandler}> Metal </Category>

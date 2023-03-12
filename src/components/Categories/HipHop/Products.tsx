@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { popularProducts } from '../../../DataBase/data';
+import { popularHipHopProducts } from '../../../DataBase/data';
 import Product from './Product';
 
 const Container = styled.div`
@@ -12,7 +12,7 @@ const Container = styled.div`
 const Products = () => {
 	return (
 		<Container>
-			{popularProducts.map((item) => (
+			{popularHipHopProducts.map((item) => (
 				<Product item={item} key={item.id} />
 			))}
 		</Container>
