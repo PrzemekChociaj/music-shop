@@ -11,6 +11,8 @@ import LoginPage from './components/Pages/LoginPage';
 import ShoppingPage from './components/Pages/ShoppingPage';
 
 function App() {
+
+	
 	return (
 		<Routes>
 			<Route path='/' element={<Home />}></Route>
