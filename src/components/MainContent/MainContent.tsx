@@ -6,18 +6,18 @@ import { useNavigate } from 'react-router-dom';
 const MainContent = () => {
 	const navigate = useNavigate();
 
-	const ShopHandler = () => {
+	const shopHandler = () => {
 		navigate('/Shop');
 	};
 	const MainContainer = styled.div`
-		height: 100vh;
-		width: 1550px;
+		height: 80vh;
+		width: 1400px;
 		border-color: black;
 		border-radius: 10px;
 		float: center;
 		position: absolute;
 		left: 310px;
-		top: 110px;
+		bottom: 65px;
 
 		background-image: url('https://img.freepik.com/free-photo/young-woman-summer-clothes-listening-music-wearing-headphones-singing-along-favorite-song-dancing-earphones-standing-against-blue-background_1258-122074.jpg?w=1800&t=st=1676928567~exp=1676929167~hmac=612d6f0c71d60a4eed6a9a20e79296aa8e4eae1f64d948e141910009e5faa968');
 		background-repeat: no-repeat;
@@ -32,15 +32,15 @@ const MainContent = () => {
 	const Descripiton = styled.p`
 		position: absolute;
 		left: 1000px;
-		bottom: 500px;
+		bottom: 350px;
 		font-family: 'Roboto Condensed', sans-serif;
-		font-size: 23px;
+		font-size: 20px;
 	`;
 
 	const Button = styled.button`
 		position: absolute;
-		top: 600px;
-		left: 1150px;
+		top: 500px;
+		left: 1100px;
 		font-family: 'Roboto Condensed', sans-serif;
 		height: 100px;
 		width: 200px;
@@ -53,7 +53,7 @@ const MainContent = () => {
 			<Descripiton>
 				If u buy CD in our shop u get 20% discount on the second one!{' '}
 			</Descripiton>
-			<Button onClick={ShopHandler}> SHOP NOW</Button>
+			<Button onClick={shopHandler}> SHOP NOW</Button>
 		</MainContainer>
 	);
 };

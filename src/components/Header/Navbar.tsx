@@ -10,11 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Badge from '@mui/material/Badge/Badge';
-import TemporaryDrawer from '../Categories/CategoriesMenu';
+import BasicMenu from '../Categories/ListDividers';
 
 export default function ButtonAppBar() {
 	const navigate = useNavigate();
 
+	const MenuHandler = () => {
+		BasicMenu();
+	};
 	const HomeHandler = () => {
 		navigate('/');
 	};
@@ -34,17 +37,13 @@ export default function ButtonAppBar() {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position='static'>
 				<Toolbar>
-					<HomeIcon
-						onClick={HomeHandler}
-						sx={{ marginRight: 3, cursor: 'pointer' }}
-					/>
 					<IconButton
 						size='large'
 						edge='start'
 						color='inherit'
 						aria-label='menu'
 						sx={{ mr: 3 }}>
-						<MenuIcon />
+						<HomeIcon onClick={HomeHandler} sx={{ cursor: 'pointer' }} />
 					</IconButton>
 
 					<Typography
