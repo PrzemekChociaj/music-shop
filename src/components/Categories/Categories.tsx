@@ -75,6 +75,8 @@ const Categories = () => {
 		}
 	`;
 	return (
+
+		
 		<CategoriesContainer>
 			CATEGORIES
 			<Category onClick={HipHopHandler}>Hip Hop</Category>

@@ -1,13 +1,4 @@
-import React from 'react';
-import Categories from '../Categories/Categories';
-import TemporaryDrawer from '../Categories/CategoriesMenu';
-import CdList from '../CdList/CdList';
-import Footer from '../Footer/Footer';
-import Discount from '../Header/Discount';
-import Header from '../Header/Header';
-import ButtonAppBar from '../Header/Navbar';
-import MainContent from '../MainContent/MainContent';
-import Newsletter from '../Newsletter/Newsletter';
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -20,18 +11,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-const Home = () => {
-
-	type Anchor = 'left';
+type Anchor = 'left';
 
 
-
-
- function TemporaryDrawer() {
+ export default function TemporaryDrawer() {
 	const [state, setState] = React.useState({
 		left: false,
 	});
-
 
 	const toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
@@ -72,16 +58,4 @@ const Home = () => {
 }
 
 
-	return (
-		<>
-			<Discount />
-			<ButtonAppBar  />
 
-			<CdList />
-			<Newsletter />
-			<Footer />
-		</>
-	);
-};
-
-export default Home;
