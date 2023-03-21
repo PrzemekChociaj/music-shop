@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FormInput from './FormInput';
 
-
-
 const Container = styled.div`
 	font-family: 'Montserrat', sans-serif;
 	background-size: cover;
@@ -54,93 +52,10 @@ const Button = styled.button`
 `;
 
 const RegisterPage = () => {
-	const [values, setValues] = useState({
-		firstname: '',
-		lastname: '',
-		username: '',
-		email: '',
-		password: '',
-		confirmPassword: '',
-	});
-
-	const inputs = [
-		{
-			id: 1,
-			name: 'firstname',
-			type: 'text',
-			placeholder: 'First Name',
-		},
-		{
-			id: 2,
-			name: 'lastname',
-			type: 'text',
-			placeholder: 'Last Name',
-		},
-		{
-			id: 3,
-			name: 'username',
-			type: 'text',
-			placeholder: 'username',
-			errorMessage:
-				'Username should be 3-16 characters and shouldnt include any special character!',
-			pattern: '^[A-Za-z0-9]{3,16}$',
-			required: true,
-		},
-		{
-			id: 4,
-			name: 'email',
-			type: 'email',
-			placeholder: 'Email',
-			errorMessage: 'It should be valid email address!',
-			required: true,
-		},
-		{
-			id: 5,
-			name: 'password',
-			type: 'password',
-			placeholder: 'Password',
-			errorMessage:
-				'Password should be 8-20 characters and include at least 1 letter, 1 number, and 1 special character!',
-			pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-			required: true,
-		},
-		{
-			id: 6,
-			name: 'confirmPassword',
-			type: 'password',
-			placeholder: 'Confirm Password',
-			errorMessage: 'Password dont match!',
-			pattern: values.password,
-			required: true,
-		},
-	];
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		console.log(values);
-	};
-
-	const onChange = (event) => {
-		setValues((values) => {
-			return { ...values, [event.target.name]: event.target.value };
-		});
-	};
-
 	return (
 		<Container>
 			<Wrapper>
-				<Title>CREATE ACCOUNT</Title>
-				<Form onSubmit={handleSubmit}>
-					{inputs.map((input) => (
-						<FormInput
-							{...input}
-							key={input.id}
-							value={values[input.name]}
-							onChange={onChange}
-						/>
-					))}
-
-					<Button> Register </Button>
-				</Form>
+				<FormInput />
 			</Wrapper>
 		</Container>
 	);

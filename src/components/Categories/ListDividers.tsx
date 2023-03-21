@@ -9,7 +9,7 @@ const style = {
 	width: '100%',
 	maxWidth: 300,
 	bgcolor: 'background.paper',
-	height: 680,
+	height: '80vh',
 	border: 1,
 };
 

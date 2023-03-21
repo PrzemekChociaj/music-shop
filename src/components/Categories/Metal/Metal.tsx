@@ -41,7 +41,7 @@ const Option = styled.option``;
 const Metal = () => {
 	return (
 		<Container>
-			<Title> Pop</Title>
+			<Title> Metal </Title>
 			<FilterContainer>
 				<Filter>
 					<FilterText> Sort Products: </FilterText>
