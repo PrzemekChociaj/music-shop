@@ -105,7 +105,7 @@ const FormInput = () => {
 									name='email'
 									autoComplete='email'
 								/>
-								<p> {errors.email?.message} </p>
+								{errors.email?.message}
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
