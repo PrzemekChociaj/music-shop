@@ -29,8 +29,6 @@ const schema = yup.object({
 		.matches(/[^\w]/, 'Password requires a symbol'),
 });
 
-
-
 const theme = createTheme();
 
 const FormInput = () => {
@@ -41,8 +39,7 @@ const FormInput = () => {
 		formState: { errors },
 		reset,
 	} = useForm({
-			resolver: yupResolver(schema),
-		},
+		resolver: yupResolver(schema),
 	});
 
 	const onSubmit = (data) => {
@@ -88,7 +85,7 @@ const FormInput = () => {
 							</Grid>
 							<Grid item xs={12} sm={6}>
 								<TextField
-									{...register('lastName',)}
+									{...register('lastName')}
 									required
 									fullWidth
 									id='lastName'
@@ -108,11 +105,11 @@ const FormInput = () => {
 									name='email'
 									autoComplete='email'
 								/>
-							<p>	{errors.email?.message} </p>
+								<p> {errors.email?.message} </p>
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
-									{...register('password',)}
+									{...register('password')}
 									required
 									fullWidth
 									name='password'
@@ -131,7 +128,6 @@ const FormInput = () => {
 											name='remember'
 											value='allowExtraEmails'
 											color='primary'
-											
 										/>
 									}
 									label='I want to receive inspiration, marketing promotions and updates via email.'
