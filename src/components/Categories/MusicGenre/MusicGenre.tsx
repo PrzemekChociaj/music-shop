@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Products from './Products';
+import { popularHipHopProducts } from '../../../DataBase/data';
 
 const Container = styled.div`
 	border: 1px solid grey;
@@ -37,10 +38,11 @@ const ImageContainer = styled.div`
 
 const Option = styled.option``;
 
-const HipHop = () => {
+type Props = { genre: string; redirectUrl: string };
+const MusicGenre: FunctionComponent<Props> = (props) => {
 	return (
 		<Container>
-			<Title> Hip Hop </Title>
+			<Title> {props.genre} </Title>
 			<FilterContainer>
 				<Filter>
 					<FilterText> Sort Products: </FilterText>
@@ -51,9 +53,12 @@ const HipHop = () => {
 					</Select>
 				</Filter>
 			</FilterContainer>
-			<Products />
+			<Products
+				redirectUrl={props.redirectUrl}
+				products={popularHipHopProducts}
+			/>
 		</Container>
 	);
 };
 
-export default HipHop;
+export default MusicGenre;
