@@ -11,13 +11,13 @@ const Container = styled.div`
 	justify-content: space-between;
 `;
 type Props = {
-	products: MusicProductItem[];
+	database: MusicProductItem[];
 	redirectUrl: string;
 };
-const Products: FunctionComponent<Props> = ({ products, redirectUrl }) => {
+const Products: FunctionComponent<Props> = ({ database, redirectUrl }) => {
 	return (
 		<Container>
-			{products.map((item) => (
+			{database.map((item) => (
 				<Product item={item} key={item.id} redirectUrl={redirectUrl} />
 			))}
 		</Container>
