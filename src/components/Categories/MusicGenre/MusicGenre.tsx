@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Products from './Products';
 import { popularHipHopProducts } from '../../../DataBase/data';
+import { MusicProductItem } from '../../../types/musicGenreTypes';
 
 const Container = styled.div`
 	border: 1px solid grey;
@@ -38,7 +39,7 @@ const ImageContainer = styled.div`
 
 const Option = styled.option``;
 
-type Props = { genre: string; redirectUrl: string };
+type Props = { genre: string; redirectUrl: string; database: MusicProductItem[]  };
 const MusicGenre: FunctionComponent<Props> = (props) => {
 	return (
 		<Container>
@@ -55,7 +56,7 @@ const MusicGenre: FunctionComponent<Props> = (props) => {
 			</FilterContainer>
 			<Products
 				redirectUrl={props.redirectUrl}
-				products={popularHipHopProducts}
+				database={props.database}
 			/>
 		</Container>
 	);
