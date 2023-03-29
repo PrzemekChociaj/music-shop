@@ -3,6 +3,8 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from 'react-router-dom';
+import { FunctionComponent } from 'react';
+import { MusicProductItem } from '../../../types/musicGenreTypes';
 
 const Info = styled.div`
 	opacity: 0;
@@ -63,12 +65,12 @@ const Icon = styled.div`
 		transform: scale(1.1);
 	}
 `;
-
-const Product = ({ item }) => {
+type Props = { item: MusicProductItem; redirectUrl: string };
+const Product: FunctionComponent<Props> = ({ item, redirectUrl }) => {
 	const navigate = useNavigate();
 
 	const ExamplePageHandler = () => {
-		navigate('/ExamplePage');
+		navigate(redirectUrl);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 	return (

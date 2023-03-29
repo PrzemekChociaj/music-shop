@@ -12,12 +12,40 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object({
+	firstName: yup.string().required('First name is required!'),
+	lastName: yup.string().required('last name is required!'),
+	email: yup.string().email().required('Should be valid email address!'),
+	password: yup
+		.string()
+		.min(8, 'Password must be 8 characters long')
+		.matches(/[0-9]/, 'Password requires a number')
+		.matches(/[a-z]/, 'Password requires a lowercase letter')
+		.matches(/[A-Z]/, 'Password requires an uppercase letter')
+		.matches(/[^\w]/, 'Password requires a symbol'),
+});
 
 const theme = createTheme();
 
 const FormInput = () => {
-	const { register, handleSubmit } = useForm();
+	const {
+		register,
+		handleSubmit,
+		setError,
+		formState: { errors },
+		reset,
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
+
+	const onSubmit = (data) => {
+		console.log(data);
+		reset();
+	};
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -39,12 +67,12 @@ const FormInput = () => {
 					<Box
 						component='form'
 						noValidate
-						onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
+						onSubmit={handleSubmit(onSubmit)}
 						sx={{ mt: 3 }}>
 						<Grid container spacing={2}>
 							<Grid item xs={12} sm={6}>
 								<TextField
-									{...register('firstName')}
+									{...register('firstName', { required: true })}
 									autoComplete='given-name'
 									name='firstName'
 									required
@@ -53,6 +81,7 @@ const FormInput = () => {
 									label='First Name'
 									autoFocus
 								/>
+								{errors.firstName?.message}
 							</Grid>
 							<Grid item xs={12} sm={6}>
 								<TextField
@@ -64,10 +93,11 @@ const FormInput = () => {
 									name='lastName'
 									autoComplete='family-name'
 								/>
+								{errors.lastName?.message}
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
-									{...register('email')}
+									{...register('email', { required: true })}
 									required
 									fullWidth
 									id='email'
@@ -75,6 +105,7 @@ const FormInput = () => {
 									name='email'
 									autoComplete='email'
 								/>
+								{errors.email?.message}
 							</Grid>
 							<Grid item xs={12}>
 								<TextField
@@ -87,6 +118,7 @@ const FormInput = () => {
 									id='password'
 									autoComplete='new-password'
 								/>
+								{errors.password?.message}
 							</Grid>
 							<Grid item xs={12}>
 								<FormControlLabel
@@ -96,7 +128,6 @@ const FormInput = () => {
 											name='remember'
 											value='allowExtraEmails'
 											color='primary'
-											defaultValue={false}
 										/>
 									}
 									label='I want to receive inspiration, marketing promotions and updates via email.'

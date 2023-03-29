@@ -1,8 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CardMedia from '@mui/material/CardMedia';
 
-const Container = styled.div`
+const schema = yup.object({
+	email: yup.string().email().required('Should be valid email address!'),
+	password: yup.string().min(8, 'Password must be 8 characters long'),
+});
+
+const Containers = styled.div`
 	font-family: 'Montserrat', sans-serif;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -45,7 +67,7 @@ const Input = styled.input`
 	margin: 20px 10px 0px 0px;
 	padding: 10px;
 `;
-const Button = styled.button`
+const Buttons = styled.button`
 	text-align: center;
 	width: 40%;
 	border: none;
@@ -58,31 +80,110 @@ const Button = styled.button`
 	align-items: center;
 `;
 
-const LoginPage = () => {
+const LoginPage = (props: any) => {
 	const navigate = useNavigate();
 	const RegisterNavigate = () => {
 		navigate('/Register');
 	};
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
+	const {
+		register,
+		handleSubmit,
+		setError,
+		formState: { errors },
+		reset,
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
+
+	const onSubmit = (data) => {
+		console.log(data);
+		reset();
 	};
 
-	return (
-		<Container>
-			<Wrapper>
-				<Title>LOGIN</Title>
-				<Form onSubmit={handleSubmit}>
-					<Input placeholder='Username'></Input>
-					<Input placeholder='Password'></Input>
+	const styles = {
+		input: {
+			color: 'white',
+		},
+	};
 
-					<Button> LOGIN </Button>
-				</Form>
-				<Register onClick={RegisterNavigate}>
-					Don't have an account? Sign Up!
-				</Register>
-			</Wrapper>
-		</Container>
+	const { classes } = props;
+
+	const theme = createTheme();
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Containers>
+				<Container component='main' maxWidth='xs'>
+					<CssBaseline />
+					<Box
+						sx={{
+							marginTop: 8,
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							bgcolor: 'white',
+							width: '400px',
+						}}>
+						<Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+							<LockOutlinedIcon />
+						</Avatar>
+						<Typography component='h1' variant='h4'>
+							Sign in
+						</Typography>
+						<Box
+							onSubmit={handleSubmit(onSubmit)}
+							component='form'
+							noValidate
+							sx={{ mt: 1 }}>
+							<TextField
+								{...register('email', { required: true })}
+								margin='normal'
+								required
+								fullWidth
+								id='email'
+								label='Email Address'
+								name='email'
+								autoComplete='email'
+								autoFocus
+								InputProps={{ inputProps: { style: { color: '#fff' } } }}
+							/>
+							{errors.email?.message}
+							<TextField
+								{...register('password', { required: true })}
+								margin='normal'
+								required
+								fullWidth
+								name='password'
+								label='Password'
+								type='password'
+								id='password'
+								autoComplete='current-password'
+							/>
+							{errors.password?.message}
+							<FormControlLabel
+								control={<Checkbox value='remember' color='primary' />}
+								label='Remember me'
+							/>
+							<Button
+								type='submit'
+								fullWidth
+								variant='contained'
+								sx={{ mt: 3, mb: 2 }}>
+								Sign In
+							</Button>
+							<Grid container>
+								<Grid item>
+									<Link href='/Register' variant='body2'>
+										{"Don't have an account? Sign Up"}
+									</Link>
+								</Grid>
+							</Grid>
+						</Box>
+					</Box>
+				</Container>
+			</Containers>
+		</ThemeProvider>
 	);
 };
 
