@@ -11,16 +11,14 @@ import LoginPage from './components/Pages/LoginPage';
 import ShoppingPage from './components/Pages/ShoppingPage';
 
 function App() {
-
-	
 	return (
 		<Routes>
 			<Route path='/' element={<Home />}></Route>
-			<Route path='/HipHop' element={<HipHopPage />}></Route>
-			<Route path='/Rock' element={<RockPage />}></Route>
-			<Route path='/Pop' element={<PopPage />}></Route>
-			<Route path='/Metal' element={<MetalPage />}></Route>
-			<Route path='/ExamplePage' element={<ExamplePage />}></Route>
+			<Route path='Genres/HipHop' element={<HipHopPage />}></Route>
+			<Route path='Genres/Metal' element={<MetalPage />}></Route>
+			<Route path='Genres/Pop' element={<PopPage />}></Route>
+			<Route path='Genres/Rock' element={<RockPage />}></Route>
+			<Route path='/products/:productId' element={<ExamplePage />}></Route>
 			<Route path='/Register' element={<RegisterPage />}></Route>
 			<Route path='/Login' element={<LoginPage />}></Route>
 			<Route path='/Shop' element={<ShoppingPage />}></Route>

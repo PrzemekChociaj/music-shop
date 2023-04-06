@@ -17,18 +17,18 @@ const ListDividers = () => {
 	const navigate = useNavigate();
 
 	const hipHopHandler = () => {
-		navigate('/HipHop');
+		navigate('Genres/HipHop');
 	};
 	const popHandler = () => {
-		navigate('/Pop');
+		navigate('Genres/Pop');
 	};
 
 	const rockHandler = () => {
-		navigate('/Rock');
+		navigate('Genres/Rock');
 	};
 
 	const metalHandler = () => {
-		navigate('/Metal');
+		navigate('Genres/Metal');
 	};
 	return (
 		<List sx={style} component='nav' aria-label='mailbox folders'>

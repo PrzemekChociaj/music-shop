@@ -66,11 +66,11 @@ const Icon = styled.div`
 	}
 `;
 type Props = { item: MusicProductItem; redirectUrl: string };
-const Product: FunctionComponent<Props> = ({ item, redirectUrl }) => {
+const Product: FunctionComponent<Props> = ({ item }) => {
 	const navigate = useNavigate();
 
 	const ExamplePageHandler = () => {
-		navigate(redirectUrl);
+		navigate(`/products/${item.id}`);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 	return (

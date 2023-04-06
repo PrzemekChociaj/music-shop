@@ -7,6 +7,10 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from 'react';
+import Product from '../Categories/MusicGenre/Product';
+import { popularHipHopProducts } from '../../DataBase/HipHopdata';
+import { SHOP_PRODUCTS } from '../../DataBase/WholeDatabase';
+import { useParams } from 'react-router-dom';
 
 const Container = styled.div`
 	height: 100vh;
@@ -76,16 +80,24 @@ const ExamplePage = () => {
 			setAmount(amount - 1);
 		}
 	};
+	const { productId } = useParams();
+
+	const obiekt = SHOP_PRODUCTS.find((product) => {
+		return product.id === Number(productId);
+	});
+	if (obiekt === undefined) {
+		return <div>brak obiektu</div>;
+	}
 	return (
 		<>
 			<Discount />
 			<Header />
 			<Container>
 				<ImageContainer>
-					<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
+					<Image src={obiekt.img}></Image>
 				</ImageContainer>
 				<InfoContainer>
-					<Title>Example Product Page</Title>
+					<Title>{obiekt.title}</Title>
 					<Description>
 						em ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
 						eget tristique nulla, sit amet commodo lorem. Suspendisse leo eros,
@@ -101,7 +113,7 @@ const ExamplePage = () => {
 						lobortis justo pulvinar sed. Praesent varius molestie magna a
 						tristique.
 					</Description>
-					<Price> 20.00$</Price>
+					<Price> {obiekt.price}</Price>
 					<Button>
 						<AddShoppingCartIcon />
 					</Button>
