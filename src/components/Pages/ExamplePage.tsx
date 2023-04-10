@@ -11,6 +11,8 @@ import Product from '../Categories/MusicGenre/Product';
 import { popularHipHopProducts } from '../../DataBase/HipHopdata';
 import { SHOP_PRODUCTS } from '../../DataBase/WholeDatabase';
 import { useParams } from 'react-router-dom';
+import { Alert } from '@mui/material';
+import { formatCurrency } from '../utilities/formatCurrency';
 
 const Container = styled.div`
 	height: 100vh;
@@ -82,11 +84,11 @@ const ExamplePage = () => {
 	};
 	const { productId } = useParams();
 
-	const obiekt = SHOP_PRODUCTS.find((product) => {
+	const productSelector = SHOP_PRODUCTS.find((product) => {
 		return product.id === Number(productId);
 	});
-	if (obiekt === undefined) {
-		return <div>brak obiektu</div>;
+	if (productSelector === undefined) {
+		return <Alert severity='error'> Product not found!</Alert>;
 	}
 	return (
 		<>
@@ -94,10 +96,10 @@ const ExamplePage = () => {
 			<Header />
 			<Container>
 				<ImageContainer>
-					<Image src={obiekt.img}></Image>
+					<Image src={productSelector.img}></Image>
 				</ImageContainer>
 				<InfoContainer>
-					<Title>{obiekt.title}</Title>
+					<Title>{productSelector.title}</Title>
 					<Description>
 						em ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
 						eget tristique nulla, sit amet commodo lorem. Suspendisse leo eros,
@@ -113,7 +115,7 @@ const ExamplePage = () => {
 						lobortis justo pulvinar sed. Praesent varius molestie magna a
 						tristique.
 					</Description>
-					<Price> {obiekt.price}</Price>
+					<Price> {formatCurrency(productSelector.price)}</Price>
 					<Button>
 						<AddShoppingCartIcon />
 					</Button>

@@ -5,8 +5,18 @@ import { useNavigate } from 'react-router-dom';
 const CdList = () => {
 	const navigate = useNavigate();
 
-	const ExamplePageHandler = () => {
-		navigate('/ExamplePage');
+	const GibbsPageHandler = () => {
+		navigate('/products/1');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	const SanahPageHandler = () => {
+		navigate('/products/37');
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	const NirvanaPageHandler = () => {
+		navigate('/products/26');
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
@@ -67,15 +77,15 @@ const CdList = () => {
 
 	return (
 		<Container>
-			<ImageContainer onClick={ExamplePageHandler}>
+			<ImageContainer onClick={GibbsPageHandler}>
 				<Title>Hip Hop - Gibbs - Czarno na białym</Title>
 				<HipHopImage />
 			</ImageContainer>
-			<ImageContainer onClick={ExamplePageHandler}>
+			<ImageContainer onClick={SanahPageHandler}>
 				<Title>Pop - Sanah - Śpiewa Poezyje</Title>
 				<PopImage />
 			</ImageContainer>
-			<ImageContainer onClick={ExamplePageHandler}>
+			<ImageContainer onClick={NirvanaPageHandler}>
 				<Title>Rock - Nirvana - Nevermind</Title>
 				<RockImage />
 			</ImageContainer>
