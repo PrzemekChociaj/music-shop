@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import { popularHipHopProducts } from '../../../DataBase/HipHopdata';
+import { popularHipHopProducts } from '../../DataBase/HipHopdata';
 import { MusicProductItem } from '../../../types/musicGenreTypes';
 import Product from './Product';
 

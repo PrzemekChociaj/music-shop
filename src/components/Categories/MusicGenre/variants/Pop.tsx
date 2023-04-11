@@ -1,5 +1,5 @@
 import React from 'react';
-import { popularPopProducts } from '../../../../DataBase/PopData';
+import { popularPopProducts } from '../../../DataBase/PopData';
 import MusicGenre from '../MusicGenre';
 
 const Pop = () => {

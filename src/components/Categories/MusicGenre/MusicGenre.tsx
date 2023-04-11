@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Products from './Products';
-import { popularHipHopProducts } from '../../../DataBase/HipHopdata';
+import { popularHipHopProducts } from '../../DataBase/HipHopdata';
 import { MusicProductItem } from '../../../types/musicGenreTypes';
 
 const Container = styled.div`

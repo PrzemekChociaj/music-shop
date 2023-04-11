@@ -9,20 +9,23 @@ import ExamplePage from './components/Pages/ExamplePage';
 import RegisterPage from './components/Pages/RegisterPage';
 import LoginPage from './components/Pages/LoginPage';
 import ShoppingPage from './components/Pages/ShoppingPage';
+import { ShoppingCartProvider } from './components/ShoppingCart/ShoppingCartContext';
 
 function App() {
 	return (
-		<Routes>
-			<Route path='/' element={<Home />}></Route>
-			<Route path='/HipHop' element={<HipHopPage />}></Route>
-			<Route path='/Metal' element={<MetalPage />}></Route>
-			<Route path='/Pop' element={<PopPage />}></Route>
-			<Route path='/Rock' element={<RockPage />}></Route>
-			<Route path='/products/:productId' element={<ExamplePage />}></Route>
-			<Route path='/Register' element={<RegisterPage />}></Route>
-			<Route path='/Login' element={<LoginPage />}></Route>
-			<Route path='/Shop' element={<ShoppingPage />}></Route>
-		</Routes>
+		<ShoppingCartProvider>
+			<Routes>
+				<Route path='/' element={<Home />}></Route>
+				<Route path='/HipHop' element={<HipHopPage />}></Route>
+				<Route path='/Metal' element={<MetalPage />}></Route>
+				<Route path='/Pop' element={<PopPage />}></Route>
+				<Route path='/Rock' element={<RockPage />}></Route>
+				<Route path='/products/:productId' element={<ExamplePage />}></Route>
+				<Route path='/Register' element={<RegisterPage />}></Route>
+				<Route path='/Login' element={<LoginPage />}></Route>
+				<Route path='/Shop' element={<ShoppingPage />}></Route>
+			</Routes>
+		</ShoppingCartProvider>
 	);
 }
 

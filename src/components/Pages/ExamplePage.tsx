@@ -8,11 +8,13 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from 'react';
 import Product from '../Categories/MusicGenre/Product';
-import { popularHipHopProducts } from '../../DataBase/HipHopdata';
-import { SHOP_PRODUCTS } from '../../DataBase/WholeDatabase';
+import { popularHipHopProducts } from '../DataBase/HipHopdata';
 import { useParams } from 'react-router-dom';
 import { Alert } from '@mui/material';
 import { formatCurrency } from '../utilities/formatCurrency';
+import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
+import { MusicProductItem } from '../../types/musicGenreTypes';
+import storeItems from "../DataBase/database.json"
 
 const Container = styled.div`
 	height: 100vh;
@@ -83,8 +85,12 @@ const ExamplePage = () => {
 		}
 	};
 	const { productId } = useParams();
+	
+	type productProps = {
+		product: MusicProductItem[],
+	}
 
-	const productSelector = SHOP_PRODUCTS.find((product) => {
+	const productSelector = storeItems.find((product) => {
 		return product.id === Number(productId);
 	});
 	if (productSelector === undefined) {

@@ -11,9 +11,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Badge from '@mui/material/Badge/Badge';
 import BasicMenu from '../Categories/ListDividers';
-
-export default function ButtonAppBar() {
+import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
+export default function Navbar() {
 	const navigate = useNavigate();
+
+	const { openCart, cartQuantity } = useShoppingCart();
 
 	const MenuHandler = () => {
 		BasicMenu();
@@ -58,8 +61,10 @@ export default function ButtonAppBar() {
 					<Button onClick={LoginNavigate} color='inherit'>
 						Login
 					</Button>
-
-					<AddShoppingCartIcon sx={{ marginLeft: 4 }} onClick={ShopNavigate} />
+					<Badge badgeContent={cartQuantity} color='secondary'>
+				
+						<ShoppingCart />
+					</Badge>
 				</Toolbar>
 			</AppBar>
 		</Box>
