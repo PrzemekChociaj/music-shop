@@ -1,6 +1,5 @@
 import Footer from '../Footer/Footer';
 import Discount from '../Header/Discount';
-import Header from '../Header/Header';
 import Newsletter from '../Newsletter/Newsletter';
 import styled from 'styled-components';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -15,6 +14,7 @@ import { formatCurrency } from '../utilities/formatCurrency';
 import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
 import { MusicProductItem } from '../../types/musicGenreTypes';
 import storeItems from "../DataBase/database.json"
+import Navbar from '../Header/Navbar';
 
 const Container = styled.div`
 	height: 100vh;
@@ -47,6 +47,8 @@ const Title = styled.h1`
 const Image = styled.img`
 	object-fit: cover;
 	height: 80vh;
+	padding-top: 30px;
+	padding-left: 30px;
 `;
 const Description = styled.div`
 	margin: 20px 0px;
@@ -74,6 +76,12 @@ const RemoveContainer = styled.div`
 
 const ExamplePage = () => {
 	const [amount, setAmount] = useState(1);
+	const {
+		getItemQuantity,
+		increaseCartQuantity,
+		removeFromCart,
+		decreaseCartQuantity,
+	} = useShoppingCart();
 
 	const Add = () => {
 		setAmount(amount + 1);
@@ -90,16 +98,19 @@ const ExamplePage = () => {
 		product: MusicProductItem[],
 	}
 
+	
 	const productSelector = storeItems.find((product) => {
 		return product.id === Number(productId);
 	});
 	if (productSelector === undefined) {
 		return <Alert severity='error'> Product not found!</Alert>;
+
+		
 	}
 	return (
 		<>
 			<Discount />
-			<Header />
+			<Navbar />
 			<Container>
 				<ImageContainer>
 					<Image src={productSelector.img}></Image>
@@ -123,7 +134,7 @@ const ExamplePage = () => {
 					</Description>
 					<Price> {formatCurrency(productSelector.price)}</Price>
 					<Button>
-						<AddShoppingCartIcon />
+						<AddShoppingCartIcon onClick={() => increaseCartQuantity(productSelector.id)} />
 					</Button>
 					<AmountContainer>
 						<RemoveContainer>

@@ -10,10 +10,8 @@ type ShoppingCartContext = {
 	increaseCartQuantity: (id: number) => void;
 	decreaseCartQuantity: (id: number) => void;
 	removeFromCart: (id: number) => void;
-	openCart: () => void;
-	closeCart: () => void;
-	cartQuantity: number
-	musicCds: CartItem[]
+	cartQuantity: number;
+	musicCds: CartItem[];
 };
 type ShoppingCartProviderProps = {
 	children: ReactNode;
@@ -26,11 +24,6 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 	const [musicCds, setMusicCds] = useState<CartItem[]>([]);
-	const [isOpen, setIsOpen] = useState(false);
-
-	const openCart = () => setIsOpen(true);
-
-	const closeCart = () => setIsOpen(false);
 
 	const cartQuantity = musicCds.reduce(
 		(quantity, item) => item.quantity + quantity,
@@ -69,11 +62,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 		});
 	};
 
-	
-
-	const getItemQuantity = (id: number) => {
-		return musicCds.find((item) => item.id === id)?.quantity || 0;
-	};
+	const getItemQuantity = (id: number) =>
+		musicCds.find((item) => item.id === id)?.quantity || 0;
 
 	const removeFromCart = (id: number) => {
 		setMusicCds((currCds) => {
@@ -90,8 +80,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 				removeFromCart,
 				musicCds,
 				cartQuantity,
-				openCart,
-				closeCart,
 			}}>
 			{children}
 			<ShoppingCart />

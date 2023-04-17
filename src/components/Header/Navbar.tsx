@@ -16,7 +16,7 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 export default function Navbar() {
 	const navigate = useNavigate();
 
-	const { openCart, cartQuantity } = useShoppingCart();
+	const { cartQuantity } = useShoppingCart();
 
 	const MenuHandler = () => {
 		BasicMenu();
@@ -62,7 +62,6 @@ export default function Navbar() {
 						Login
 					</Button>
 					<Badge badgeContent={cartQuantity} color='secondary'>
-				
 						<ShoppingCart />
 					</Badge>
 				</Toolbar>

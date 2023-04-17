@@ -5,7 +5,6 @@ import { popularHipHopProducts } from '../../DataBase/HipHopdata';
 import { MusicProductItem } from '../../../types/musicGenreTypes';
 
 const Container = styled.div`
-	border: 1px solid grey;
 	margin-top: 10px;
 	height: 100vh;
 `;
