@@ -7,6 +7,10 @@ import styled from 'styled-components';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Header/Navbar';
+import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
+import { Stack } from '@mui/material';
+import CartItem from '../ShoppingCart/CartItem';
 
 const Container = styled.div``;
 
@@ -132,9 +136,11 @@ const ShoppingPage = () => {
 	const HomeHandler = () => {
 		navigate('/');
 	};
+
+	const { closeCart, openCart, getItemQuantity, musicCds } = useShoppingCart();
 	return (
 		<Container>
-			<Header />
+			<Navbar />
 			<Wrapper>
 				<Title>YOUR BAG</Title>
 				<Top>
@@ -144,45 +150,13 @@ const ShoppingPage = () => {
 				<Bottom>
 					<Info>
 						<Product>
-							<ProductDetail>
-								<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
-
-								<Details>
-									<ProductName>
-										<b>Product:</b> EXAMPLE MUSIC CD
-									</ProductName>
-									<ProductId>
-										<b>ID:</b> 123456789
-									</ProductId>
-								</Details>
-							</ProductDetail>
-							<PriceDetail>
-								<ProductAmountContainer>
-									<ProductAmount> Amount: 1</ProductAmount>
-								</ProductAmountContainer>
-								<ProductPrice>$ 30</ProductPrice>
-							</PriceDetail>
+						<Stack gap={3}>
+						{musicCds.map((item) => (
+							<CartItem key={item.id} {...item} />
+						))}
+					</Stack>
 						</Product>
 						<Hr />
-						<Product>
-							<ProductDetail>
-								<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
-								<Details>
-									<ProductName>
-										<b>Product:</b> EXAMPLE MUSIC CD
-									</ProductName>
-									<ProductId>
-										<b>ID:</b> 123456789
-									</ProductId>
-								</Details>
-							</ProductDetail>
-							<PriceDetail>
-								<ProductAmountContainer>
-									<ProductAmount>Amount: 1</ProductAmount>
-								</ProductAmountContainer>
-								<ProductPrice>$ 30</ProductPrice>
-							</PriceDetail>
-						</Product>
 					</Info>
 					<Summary>
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
