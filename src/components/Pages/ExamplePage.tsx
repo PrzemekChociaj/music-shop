@@ -7,6 +7,14 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from 'react';
+import Product from '../Categories/MusicGenre/Product';
+import { popularHipHopProducts } from '../DataBase/HipHopdata';
+import { useParams } from 'react-router-dom';
+import { Alert } from '@mui/material';
+import { formatCurrency } from '../utilities/formatCurrency';
+import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
+import { MusicProductItem } from '../../types/musicGenreTypes';
+import storeItems from "../DataBase/database.json"
 
 const Container = styled.div`
 	height: 100vh;
@@ -76,16 +84,28 @@ const ExamplePage = () => {
 			setAmount(amount - 1);
 		}
 	};
+	const { productId } = useParams();
+	
+	type productProps = {
+		product: MusicProductItem[],
+	}
+
+	const productSelector = storeItems.find((product) => {
+		return product.id === Number(productId);
+	});
+	if (productSelector === undefined) {
+		return <Alert severity='error'> Product not found!</Alert>;
+	}
 	return (
 		<>
 			<Discount />
 			<Header />
 			<Container>
 				<ImageContainer>
-					<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
+					<Image src={productSelector.img}></Image>
 				</ImageContainer>
 				<InfoContainer>
-					<Title>Example Product Page</Title>
+					<Title>{productSelector.title}</Title>
 					<Description>
 						em ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
 						eget tristique nulla, sit amet commodo lorem. Suspendisse leo eros,
@@ -101,7 +121,7 @@ const ExamplePage = () => {
 						lobortis justo pulvinar sed. Praesent varius molestie magna a
 						tristique.
 					</Description>
-					<Price> 20.00$</Price>
+					<Price> {formatCurrency(productSelector.price)}</Price>
 					<Button>
 						<AddShoppingCartIcon />
 					</Button>

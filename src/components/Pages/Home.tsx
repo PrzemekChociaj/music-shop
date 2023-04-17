@@ -20,12 +20,13 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BasicMenu from '../Categories/ListDividers';
 import ListDividers from '../Categories/ListDividers';
+import Navbar from '../Header/Navbar';
 
 const Home = () => {
 	return (
 		<>
 			<Discount />
-			<ButtonAppBar />
+			<Navbar />
 			<ListDividers />
 			<MainContent />
 			<CdList />

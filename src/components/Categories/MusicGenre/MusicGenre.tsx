@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Products from './Products';
-import { popularHipHopProducts } from '../../../DataBase/data';
+import { popularHipHopProducts } from '../../DataBase/HipHopdata';
 import { MusicProductItem } from '../../../types/musicGenreTypes';
 
 const Container = styled.div`
@@ -39,7 +39,11 @@ const ImageContainer = styled.div`
 
 const Option = styled.option``;
 
-type Props = { genre: string; redirectUrl: string; database: MusicProductItem[]  };
+type Props = {
+	genre: string;
+	database: MusicProductItem[];
+	wholedatabase: MusicProductItem[];
+};
 const MusicGenre: FunctionComponent<Props> = (props) => {
 	return (
 		<Container>
@@ -54,10 +58,7 @@ const MusicGenre: FunctionComponent<Props> = (props) => {
 					</Select>
 				</Filter>
 			</FilterContainer>
-			<Products
-				redirectUrl={props.redirectUrl}
-				database={props.database}
-			/>
+			<Products database={props.database} />
 		</Container>
 	);
 };

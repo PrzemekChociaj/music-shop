@@ -5,6 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from 'react-router-dom';
 import { FunctionComponent } from 'react';
 import { MusicProductItem } from '../../../types/musicGenreTypes';
+import { useShoppingCart } from '../../ShoppingCart/ShoppingCartContext';
 
 const Info = styled.div`
 	opacity: 0;
@@ -65,12 +66,18 @@ const Icon = styled.div`
 		transform: scale(1.1);
 	}
 `;
-type Props = { item: MusicProductItem; redirectUrl: string };
-const Product: FunctionComponent<Props> = ({ item, redirectUrl }) => {
+type Props = { item: MusicProductItem };
+const Product: FunctionComponent<Props> = ({ item }) => {
+	const {
+		getItemQuantity,
+		increaseCartQuantity,
+		removeFromCart,
+		decreaseCartQuantity,
+	} = useShoppingCart();
 	const navigate = useNavigate();
 
 	const ExamplePageHandler = () => {
-		navigate(redirectUrl);
+		navigate(`/products/${item.id}`);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 	return (
@@ -79,7 +86,7 @@ const Product: FunctionComponent<Props> = ({ item, redirectUrl }) => {
 			<Image src={item.img} />
 			<Info>
 				<Icon>
-					<AddShoppingCartIcon />
+					<AddShoppingCartIcon onClick={() => increaseCartQuantity(item.id)} />
 				</Icon>
 				<Icon>
 					<SearchIcon onClick={ExamplePageHandler} />
