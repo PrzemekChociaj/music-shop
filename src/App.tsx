@@ -10,6 +10,8 @@ import RegisterPage from './components/Pages/RegisterPage';
 import LoginPage from './components/Pages/LoginPage';
 import ShoppingPage from './components/Pages/ShoppingPage';
 import { ShoppingCartProvider } from './components/ShoppingCart/ShoppingCartContext';
+import Checkout from './components/Pages/Checkout/CheckoutPage';
+
 
 function App() {
 	return (
@@ -24,6 +26,7 @@ function App() {
 				<Route path='/Register' element={<RegisterPage />}></Route>
 				<Route path='/Login' element={<LoginPage />}></Route>
 				<Route path='/Shop' element={<ShoppingPage />}></Route>
+				<Route path='/Checkout' element={<Checkout />}></Route>
 			</Routes>
 		</ShoppingCartProvider>
 	);

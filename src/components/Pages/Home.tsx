@@ -1,5 +1,4 @@
 import React from 'react';
-import Categories from '../Categories/Categories';
 import CdList from '../CdList/CdList';
 import Footer from '../Footer/Footer';
 import Discount from '../Header/Discount';

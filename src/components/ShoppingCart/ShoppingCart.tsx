@@ -10,10 +10,16 @@ import CartItem from './CartItem';
 import { formatCurrency } from '../utilities/formatCurrency';
 import storeItems from '../DataBase/database.json';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const ShoppingCart = () => {
 	const { getItemQuantity, musicCds } = useShoppingCart();
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const navigate = useNavigate();
+
+	const ShopNavigator = () => {
+		navigate('/Shop');
+	};
 	return (
 		<>
 			<ShoppingCartIcon
@@ -24,7 +30,12 @@ const ShoppingCart = () => {
 				anchor='right'
 				open={isDrawerOpen}
 				onClose={() => setIsDrawerOpen(false)}>
-				<Box p={2} width='300px' textAlign='center' role='presentation'>
+				<Box
+					p={2}
+					width='300px'
+					textAlign='center'
+					role='presentation'
+					alignItems='center'>
 					<Typography variant='h6' component='div'>
 						Cart
 					</Typography>
@@ -33,7 +44,7 @@ const ShoppingCart = () => {
 							<CartItem key={item.id} {...item} />
 						))}
 						<div>
-							Total: 
+							Total:
 							{formatCurrency(
 								musicCds.reduce((total, cartItem) => {
 									const item = storeItems.find((i) => i.id === cartItem.id);
@@ -43,8 +54,12 @@ const ShoppingCart = () => {
 						</div>
 					</Stack>
 				</Box>
+
+				<Button onClick={ShopNavigator} color='primary'>
+					{' '}
+					ORDER{' '}
+				</Button>
 				<CloseIcon onClick={() => setIsDrawerOpen(false)} />
-				<Button color='primary' > ORDER </Button>
 			</Drawer>
 		</>
 	);

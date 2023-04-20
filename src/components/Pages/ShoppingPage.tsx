@@ -7,6 +7,12 @@ import styled from 'styled-components';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import { formatCurrency } from '../utilities/formatCurrency';
+import { useShoppingCart } from '../ShoppingCart/ShoppingCartContext';
+import CartItem from '../ShoppingCart/CartItem';
+import storeItems from '../DataBase/database.json';
+import Stack from '@mui/material/Stack';
+import Navbar from '../Header/Navbar';
 
 const Container = styled.div``;
 
@@ -127,82 +133,51 @@ const Button = styled.button`
 `;
 
 const ShoppingPage = () => {
+	const { getItemQuantity, musicCds } = useShoppingCart();
 	const navigate = useNavigate();
-
 	const HomeHandler = () => {
 		navigate('/');
 	};
+	const checkoutNavigator = () => {
+		navigate('/Checkout');
+	};
+
 	return (
 		<Container>
-			<Header />
+			<Navbar />
 			<Wrapper>
 				<Title>YOUR BAG</Title>
 				<Top>
 					<TopButton onClick={HomeHandler}>CONTINUE SHOPPING</TopButton>
-					<TopButton>CHECKOUT NOW</TopButton>
+					<TopButton onClick={checkoutNavigator}>CHECKOUT NOW</TopButton>
 				</Top>
 				<Bottom>
 					<Info>
 						<Product>
-							<ProductDetail>
-								<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
-
-								<Details>
-									<ProductName>
-										<b>Product:</b> EXAMPLE MUSIC CD
-									</ProductName>
-									<ProductId>
-										<b>ID:</b> 123456789
-									</ProductId>
-								</Details>
-							</ProductDetail>
-							<PriceDetail>
-								<ProductAmountContainer>
-									<ProductAmount> Amount: 1</ProductAmount>
-								</ProductAmountContainer>
-								<ProductPrice>$ 30</ProductPrice>
-							</PriceDetail>
+							<Stack gap={3}>
+								{musicCds.map((item) => (
+									<CartItem key={item.id} {...item} />
+								))}
+							</Stack>
 						</Product>
 						<Hr />
-						<Product>
-							<ProductDetail>
-								<Image src='https://ecsmedia.pl/c/thriller-b-iext124301159.jpg'></Image>
-								<Details>
-									<ProductName>
-										<b>Product:</b> EXAMPLE MUSIC CD
-									</ProductName>
-									<ProductId>
-										<b>ID:</b> 123456789
-									</ProductId>
-								</Details>
-							</ProductDetail>
-							<PriceDetail>
-								<ProductAmountContainer>
-									<ProductAmount>Amount: 1</ProductAmount>
-								</ProductAmountContainer>
-								<ProductPrice>$ 30</ProductPrice>
-							</PriceDetail>
-						</Product>
 					</Info>
 					<Summary>
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
-						<SummaryItem>
-							<SummaryItemText>Subtotal</SummaryItemText>
-							<SummaryItemPrice>$ 80</SummaryItemPrice>
-						</SummaryItem>
-						<SummaryItem>
-							<SummaryItemText>Estimated Shipping</SummaryItemText>
-							<SummaryItemPrice>$ 5.90</SummaryItemPrice>
-						</SummaryItem>
-						<SummaryItem>
-							<SummaryItemText>Shipping Discount</SummaryItemText>
-							<SummaryItemPrice>$ -5.90</SummaryItemPrice>
-						</SummaryItem>
+
+						<SummaryItem></SummaryItem>
 						<SummaryItem type='total'>
 							<SummaryItemText>Total</SummaryItemText>
-							<SummaryItemPrice>$ 80</SummaryItemPrice>
+							<SummaryItemPrice>
+								{formatCurrency(
+									musicCds.reduce((total, cartItem) => {
+										const item = storeItems.find((i) => i.id === cartItem.id);
+										return total + (item?.price || 0) * cartItem.quantity;
+									}, 0)
+								)}
+							</SummaryItemPrice>
 						</SummaryItem>
-						<Button>CHECKOUT NOW</Button>
+						<Button onClick={checkoutNavigator}>CHECKOUT NOW</Button>
 					</Summary>
 				</Bottom>
 			</Wrapper>
