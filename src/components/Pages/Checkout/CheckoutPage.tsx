@@ -15,8 +15,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Review from './Review';
 import AddressForm from './AddressForm';
 import PaymentForm from './Payment';
+import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { addressFormSchema } from './Validation';
+import { cardSchema } from './Validation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
+
+
 
 function getStepContent(step: number) {
 	switch (step) {
@@ -36,6 +44,21 @@ const theme = createTheme();
 export default function Checkout() {
 	const [activeStep, setActiveStep] = React.useState(0);
 
+const card = cardSchema
+const address = addressFormSchema
+
+	const methods = useForm();
+	
+		const {
+		register,
+		handleSubmit,
+		setError,
+		formState: { errors },
+		reset,
+	} = useForm({resolver: yupResolver(cardSchema)});
+
+
+
 
 
 	const handleNext = () => {
@@ -47,7 +70,9 @@ export default function Checkout() {
 		setActiveStep(activeStep - 1);
 	};
 
+
 	return (
+		<FormProvider{...methods}>
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<AppBar
@@ -110,5 +135,6 @@ export default function Checkout() {
 				</Paper>
 			</Container>
 		</ThemeProvider>
+		</FormProvider>
 	);
 }

@@ -6,34 +6,24 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm, useFormContext } from 'react-hook-form';
+import { addressFormSchema } from './Validation';
+
 import { Box, Button } from '@mui/material';
 
-const schema = yup.object({
-	firstName: yup.string().required('First name is required!'),
-	lastName: yup.string().required('last name is required!'),
-	address: yup.string().required('Address is required!'),
-	city: yup.string().required('City is required!'),
-	region: yup.string().required('region is required!'),
-	zip: yup
-		.string()
-		.required()
-		.matches(/^[0-9]+$/, 'Must be only digits')
-		.min(5, 'Must be exactly 5 digits')
-		.max(5, 'Must be exactly 5 digits'),
-	country: yup.string().required('Country is required!'),
-});
+
 
 export default function AddressForm() {
+
+	const schema = addressFormSchema
+
 	const {
 		register,
 		handleSubmit,
 		setError,
 		formState: { errors },
 		reset,
-	} = useForm({
-		resolver: yupResolver(schema),
-	});
+	} = useFormContext();
 
 	const onSubmit = (data) => {
 		console.log(data);

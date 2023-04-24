@@ -1,3 +1,8 @@
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+
 export const addressFormSchema = yup.object({
 	firstName: yup.string().required('First name is required!'),
 	lastName: yup.string().required('last name is required!'),
@@ -15,7 +20,7 @@ export const addressFormSchema = yup.object({
 
 
 
-const schema = yup.object({
+ export const cardSchema = yup.object({
 	name: yup.string().required('name is required!'),
 	card: yup.string().required()
 	.matches(/^[0-9]+$/, 'Must be only digits')
