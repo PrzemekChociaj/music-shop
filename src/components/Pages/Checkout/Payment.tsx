@@ -4,10 +4,11 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { Box, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Box, Button } from '@mui/material';
+import { SubmitHandler, useForm, useFormContext } from 'react-hook-form';
+import { addressFormSchema } from './Validation';
 
 const schema = yup.object({
 	name: yup.string().required('name is required!'),
@@ -25,16 +26,13 @@ const schema = yup.object({
 
 export default function PaymentForm() {
 
-
 	const {
 		register,
 		handleSubmit,
 		setError,
 		formState: { errors },
 		reset,
-	} = useForm({
-		resolver: yupResolver(schema),
-	});
+	} = useFormContext();
 
 	const onSubmit = (data) => {
 		console.log(data);

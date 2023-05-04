@@ -4,6 +4,12 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import { useShoppingCart } from '../../ShoppingCart/ShoppingCartContext';
+import { Stack } from '@mui/material';
+import CartItem from '../../ShoppingCart/CartItem';
+formatCurrency;
+import storeItems from '../../DataBase/database.json';
+import { formatCurrency } from '../../utilities/formatCurrency';
 
 const products = [
 	{
@@ -37,25 +43,24 @@ const payments = [
 ];
 
 export default function Review() {
+	const { getItemQuantity, musicCds } = useShoppingCart();
 	return (
 		<React.Fragment>
 			<Typography variant='h6' gutterBottom>
 				Order summary
 			</Typography>
-			<List disablePadding>
-				{products.map((product) => (
-					<ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-						<ListItemText primary={product.name} secondary={product.desc} />
-						<Typography variant='body2'>{product.price}</Typography>
-					</ListItem>
+			<Stack gap={1}>
+				{musicCds.map((item) => (
+					<CartItem key={item.id} {...item} />
 				))}
-				<ListItem sx={{ py: 1, px: 0 }}>
-					<ListItemText primary='Total' />
-					<Typography variant='subtitle1' sx={{ fontWeight: 700 }}>
-						$34.06
-					</Typography>
-				</ListItem>
-			</List>
+			</Stack>
+		<Typography>Total: {formatCurrency(
+									musicCds.reduce((total, cartItem) => {
+										const item = storeItems.find((i) => i.id === cartItem.id);
+										return total + (item?.price || 0) * cartItem.quantity;
+									}, 0)
+								)}
+								</Typography>
 			<Grid container spacing={2}>
 				<Grid item xs={12} sm={6}>
 					<Typography variant='h6' gutterBottom sx={{ mt: 2 }}>

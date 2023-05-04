@@ -26,6 +26,9 @@ const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
 
 
+
+
+
 function getStepContent(step: number) {
 	switch (step) {
 		case 0:
@@ -47,15 +50,9 @@ export default function Checkout() {
 const card = cardSchema
 const address = addressFormSchema
 
-	const methods = useForm();
+	const methods = useForm({resolver: yupResolver(addressFormSchema)});
 	
-		const {
-		register,
-		handleSubmit,
-		setError,
-		formState: { errors },
-		reset,
-	} = useForm({resolver: yupResolver(cardSchema)});
+
 
 
 
@@ -63,6 +60,7 @@ const address = addressFormSchema
 
 	const handleNext = () => {
 		setActiveStep(activeStep + 1);
+
 		
 	};
 
@@ -109,7 +107,7 @@ const address = addressFormSchema
 								Thank you for your order.
 							</Typography>
 							<Typography variant='subtitle1'>
-								Your order number is #2001539. We have emailed your order
+								Your order number is #2004539. We have emailed your order
 								confirmation, and will send you an update when your order has
 								shipped.
 							</Typography>
@@ -117,13 +115,14 @@ const address = addressFormSchema
 					) : (
 						<React.Fragment>
 							{getStepContent(activeStep)}
-							<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+							<Box component='form' sx={{ display: 'flex', justifyContent: 'flex-end' }}>
 								{activeStep !== 0 && (
 									<Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
 										Back
 									</Button>
 								)}
 								<Button
+							
 									variant='contained'
 									onClick={handleNext}
 									sx={{ mt: 3, ml: 1 }}>

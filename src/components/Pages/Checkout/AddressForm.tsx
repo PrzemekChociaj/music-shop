@@ -13,9 +13,12 @@ import { Box, Button } from '@mui/material';
 
 
 
+
+
+
+
 export default function AddressForm() {
 
-	const schema = addressFormSchema
 
 	const {
 		register,
@@ -27,7 +30,7 @@ export default function AddressForm() {
 
 	const onSubmit = (data) => {
 		console.log(data);
-		reset();
+		
 	};
 
 	return (
@@ -39,7 +42,7 @@ export default function AddressForm() {
 				<Grid container spacing={3}>
 					<Grid item xs={12} sm={6}>
 						<TextField
-							{...register('firstName')}
+							{...register('firstName ')}
 							required
 							id='firstName'
 							name='firstName'
@@ -69,23 +72,14 @@ export default function AddressForm() {
 							required
 							id='address1'
 							name='address1'
-							label='Address line 1'
+							label='Address'
 							fullWidth
 							autoComplete='shipping address-line1'
 							variant='standard'
 						/>
 					</Grid>
-					<Grid item xs={12}>
-						<TextField
-							{...register('address')}
-							id='address2'
-							name='address2'
-							label='Address line 2'
-							fullWidth
-							autoComplete='shipping address-line2'
-							variant='standard'
-						/>
-					</Grid>
+			
+					{errors.address?.message}
 					<Grid item xs={12} sm={6}>
 						<TextField
 							{...register('city')}
@@ -98,6 +92,7 @@ export default function AddressForm() {
 							variant='standard'
 						/>
 					</Grid>
+			
 					<Grid item xs={12} sm={6}>
 						<TextField
 							{...register('region')}
@@ -110,7 +105,7 @@ export default function AddressForm() {
 					</Grid>
 					<Grid item xs={12} sm={6}>
 						<TextField
-							{...register('zip')}
+							{...register('zip', { required: true })}
 							required
 							id='zip'
 							name='zip'
@@ -145,14 +140,7 @@ export default function AddressForm() {
 							}
 							label='Use this address for payment details'
 						/>
-					</Grid>
-					<Button
-							type='submit'
-							fullWidth
-							variant='contained'
-							sx={{ mt: 3, mb: 2 }}>
-							Sign Up
-						</Button>
+					</Grid>	
 				</Grid>
 
 			</Box>
